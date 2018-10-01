@@ -19,6 +19,8 @@ The F# community use this repo and others to publish these components:
 
 * “fsharp” Debian Linux packages for F# + Mono (published from [derivative repo](https://github.com/mono/linux-packaging-fsharp/)) 
 
+* Linuxbrew package which works on all distributions, as part of [their mono package](https://github.com/Linuxbrew/homebrew-core/blob/master/Formula/mono.rb)
+
 * “fsharp” as bundled in macOS tooling for F# + Mono by Xamarin and installed either from [the Mono Project Download page](http://www.mono-project.com/download/#download-mac) or via homebrew cask as part of the [`mono-mdk`](https://github.com/caskroom/homebrew-cask/blob/master/Casks/mono-mdk.rb) cask (`brew cask install mono-mdk`).  The mono repository includes F# into Mono itself using [this script](https://github.com/mono/mono/blob/master/packaging/MacSDK/fsharp.py), note that some patches may be added as defined by that script.
 
 * “fsharp” docker image (published from [related repo](https://github.com/fsprojects/docker-fsharp))
@@ -173,9 +175,7 @@ This builds the proto compiler, then the library, then the final compiler.
 The FSharp.Core.dll produced is only delay-signed (Mono does not require strong names).
 If a strong-name signed FSharp.Core.dll is needed then use the one in
 
-    lib\bootstrap\signed\.NETFramework\v4.0\4.3.0.0\FSharp.Core.dll
-    lib\bootstrap\signed\.NETFramework\v4.0\4.3.1.0\FSharp.Core.dll
-
+    lib\bootstrap\signed\.NETFramework\v4.0\...
 
 ### Building on Linux  (Wheezy build)
 
@@ -210,7 +210,7 @@ Choose a different branch name as necessary.  Then choose a visualfsharp commit 
 
 but if you run into trouble reset and try again at a specific hash. Then remove stripped files:
 
-    git rm -fr --ignore-unmatch vsintegration setup tests/fsharpqa tests/service TESTGUIDE.md src/buildfromsource* fcs netci.groovy src/fsharp/FSharp.Compiler.nuget scripts/dotnet-install.sh before_install.sh build.cmd build.sh
+    git rm -fr --ignore-unmatch vsintegration setup tests/fsharpqa tests/service TESTGUIDE.md src/buildfromsource* fcs netci.groovy src/fsharp/FSharp.Compiler.nuget scripts/dotnet-install.sh before_install.sh build.cmd build.sh src/fsharp/FSharp.Compiler.Private src/fsharp/FSharp.Core.nuget src/fsharp/Fsc/project.json src/fsharp/fsi/project.json tests/EndToEndBuildTests tests/FSharp.Core.UnitTests/project.json DotnetCLIToolsVersion.txt DEVGUIDE.md FSharpBuild.Directory.Build.targets VisualFSharp.sln src/fsharp/FSharp.Build/project.json
 
 then 
 
